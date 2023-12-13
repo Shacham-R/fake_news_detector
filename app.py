@@ -1,5 +1,8 @@
 import requests
-from bs4 import BeautifulSoup as bs
+try:
+    from bs4 import BeautifulSoup
+except :
+    from BeautifulSoup import BeautifulSoup 
 
 import pandas as pd
 import numpy as np
