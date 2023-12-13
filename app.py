@@ -24,7 +24,7 @@ import streamlit as st
 
 import pickle
 from functools import reduce
-'''
+
 #get files
 
 #nltk packages
@@ -37,7 +37,7 @@ new_words = ['said','like','year','would','house','also','sends']
 stop_words.extend(new_words)
 stop_words = set(stop_words)
 nltk.download('punkt')
-
+'''
 #functions
 
 def scrape_url(url):
