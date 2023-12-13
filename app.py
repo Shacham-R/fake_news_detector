@@ -10,7 +10,6 @@ import numpy as np
 
 import nltk
 from nltk.corpus import stopwords'''
-from scipy import stats
 
 import tensorflow as tf
 from tensorflow import keras
