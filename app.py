@@ -9,7 +9,7 @@ import numpy as np
 
 
 import nltk
-from nltk.corpus import stopwords'''
+from nltk.corpus import stopwords
 
 import tensorflow as tf
 from tensorflow import keras
@@ -24,7 +24,7 @@ import streamlit as st
 
 import pickle
 from functools import reduce
-
+'''
 #get files
 
 #nltk packages
