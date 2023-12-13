@@ -1,5 +1,5 @@
 import requests
-try:
+'''try:
     from bs4 import BeautifulSoup as bs
 except :
     from beautifulsoup import BeautifulSoup as bs
@@ -9,7 +9,7 @@ import numpy as np
 
 
 import nltk
-from nltk.corpus import stopwords
+from nltk.corpus import stopwords'''
 from scipy import stats
 
 import tensorflow as tf
