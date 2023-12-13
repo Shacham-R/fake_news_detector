@@ -37,7 +37,7 @@ new_words = ['said','like','year','would','house','also','sends']
 stop_words.extend(new_words)
 stop_words = set(stop_words)
 nltk.download('punkt')
-'''
+
 #functions
 
 def scrape_url(url):
@@ -105,7 +105,7 @@ def main_article_check(url):
   text = tokenizing(text)
   answer = predicting(text)
   return answer
-
+'''
 #images
 troll1 = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/troll1.png?raw=true"
 imp = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/box_imp.png?raw=true"
@@ -176,9 +176,9 @@ with tab3:
         st.header("Demo")
         st.warning("This is a prototype, plaese do not take seriously")
         url = st.text_input('Please enter a url to test')
-        article_text = scrape_url(url)
-        text_area = st.text_area("Article Text",article_text)
+        #article_text = scrape_url(url)
+        #text_area = st.text_area("Article Text",article_text)
         if st.button("Predict"):
-            answer = main_article_check(url)
+            answer = 42#main_article_check(url)
             st.info(answer)
 
