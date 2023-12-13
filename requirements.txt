@@ -1,13 +1,9 @@
 requests
 beautifulsoup4==4.9.0
 
-nltk
+nltk>=1
 
 tensorflow==2.14
 
-import re
-
-streamlit
-
-pickle
-functools
+pickle>=1
+functools>=1
