@@ -1,13 +1,9 @@
 requests
 beautifulsoup4==4.9.0
 
-pandas
-numpy
-
 nltk
-scipy
 
-tensorflow
+tensorflow==2.14
 
 import re
 
