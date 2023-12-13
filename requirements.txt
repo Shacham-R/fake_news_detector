@@ -1,0 +1,17 @@
+requests
+BeautifulSoup
+
+pandas
+numpy
+
+nltk
+scipy
+
+tensorflow
+
+import re
+
+streamlit
+
+pickle
+functools
