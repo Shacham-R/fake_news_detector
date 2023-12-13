@@ -1,8 +1,8 @@
 import requests
 try:
-    from bs4 import BeautifulSoup
+    from bs4 import BeautifulSoup as bs
 except :
-    from BeautifulSoup import BeautifulSoup 
+    from BeautifulSoup import BeautifulSoup as bs
 
 import pandas as pd
 import numpy as np
