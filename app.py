@@ -1,8 +1,8 @@
 import requests
-'''try:
+try:
     from bs4 import BeautifulSoup as bs
 except :
-    from beautifulsoup import BeautifulSoup as bs'''
+    from beautifulsoup import BeautifulSoup as bs
 
 import pandas as pd
 import numpy as np
