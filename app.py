@@ -1,4 +1,5 @@
 import requests
+import streamlit as st
 '''try:
     from bs4 import BeautifulSoup as bs
 except :
@@ -20,7 +21,7 @@ from keras.models import load_model
 
 import re
 
-import streamlit as st
+
 
 import pickle
 from functools import reduce
