@@ -1,7 +1,7 @@
 import requests
 import streamlit as st
 st.set_page_config(page_title="Fake News Detector", page_icon=":rolled_up_newspaper:", layout="wide")
-'''try:
+try:
     from bs4 import BeautifulSoup as bs
 except :
     from beautifulsoup import BeautifulSoup as bs
@@ -107,7 +107,7 @@ def main_article_check(url):
   text = tokenizing(text)
   answer = predicting(text)
   return answer
-'''
+
 #images
 troll1 = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/troll1.png?raw=true"
 imp = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/box_imp.png?raw=true"
