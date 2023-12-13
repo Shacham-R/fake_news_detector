@@ -1,10 +1,8 @@
 import requests
 import streamlit as st
 st.set_page_config(page_title="Fake News Detector", page_icon=":rolled_up_newspaper:", layout="wide")
-try:
-    from bs4 import BeautifulSoup as bs
-except :
-    from beautifulsoup import BeautifulSoup as bs
+
+from beautifulsoup import BeautifulSoup as bs
 
 import pandas as pd
 import numpy as np
@@ -178,9 +176,9 @@ with tab3:
         st.header("Demo")
         st.warning("This is a prototype, plaese do not take seriously")
         url = st.text_input('Please enter a url to test')
-        #article_text = scrape_url(url)
-        #text_area = st.text_area("Article Text",article_text)
+        article_text = scrape_url(url)
+        text_area = st.text_area("Article Text",article_text)
         if st.button("Predict"):
-            answer = 42#main_article_check(url)
+            answer = main_article_check(url)
             st.info(answer)
 
