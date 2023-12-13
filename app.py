@@ -1,5 +1,6 @@
 import requests
 import streamlit as st
+st.set_page_config(page_title="Fake News Detector", page_icon=":rolled_up_newspaper:", layout="wide")
 '''try:
     from bs4 import BeautifulSoup as bs
 except :
@@ -113,7 +114,7 @@ imp = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_d
 RF_FI = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/Random_forest_feature_importance.png?raw=true"
 DT_EM = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/Decision_tree_error_metrics.png?raw=true"
 
-st.set_page_config(page_title="Fake News Detector", page_icon=":rolled_up_newspaper:", layout="wide")
+
 
 tab1, tab2, tab3 = st.tabs(["Overview", "Process", "Demo"])
 
