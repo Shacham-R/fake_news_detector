@@ -30,7 +30,7 @@ from functools import reduce
 from st_files_connection import FilesConnection
 import h5py
 
-
+conn = st.connection('gcs', type=FilesConnection)
 
 #get files
 with conn.open("fake_news_model/tokenizer.pickle","rb") as tok_file:
