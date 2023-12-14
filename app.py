@@ -28,9 +28,9 @@ import re
 import pickle
 from functools import reduce
 from st_files_connection import FilesConnection
+import h5py
 
-# Create connection object and retrieve file contents.
-# Specify input format is a csv and to cache the result for 600 seconds.
+#Create connection object and retrieve file contents.
 conn = st.connection('gcs', type=FilesConnection)
 
 #get files
@@ -38,8 +38,8 @@ with conn.open("fake_news_model/tokenizer.pickle","rb") as tok_file:
   tokenizer = pickle.load(tok_file)
 
 with conn.open("fake_news_model/SNN_fake_news.keras","rb") as model_file:
-  print(model_file)
-  #model = keras.models.load_model(model_file)
+  model_gcs = h5py.File(model_file, 'r')
+  model = keras.models.load_model(model_gcs)
 
 #nltk packages
 nltk.download('stopwords')
