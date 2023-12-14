@@ -27,8 +27,18 @@ import re
 
 import pickle
 from functools import reduce
+from st_files_connection import FilesConnection
+
+# Create connection object and retrieve file contents.
+# Specify input format is a csv and to cache the result for 600 seconds.
+conn = st.connection('gcs', type=FilesConnection)
 
 #get files
+tokenizer_fileloc = conn.open("fake_news_model/tokenizer.pickle")
+tokenizer = pickle.load(open(tokenizer_fileloc, 'rb'))
+
+model_file = conn.open("fake_news_model/SNN_fake_news.keras")
+model = keras.models.load_model(model_file)
 
 #nltk packages
 nltk.download('stopwords')
@@ -84,15 +94,12 @@ def text_cleaning(text):
 
 
 def tokenizing(text):
-  tokenizer_fileloc = '/content/drive/MyDrive/Ironhack/final_project_fake_news/tokenizer.pickle'
-  tokenizer = pickle.load(open(tokenizer_fileloc, 'rb'))
   text = tokenizer.texts_to_sequences(text)
   text = keras.preprocessing.sequence.pad_sequences(text, maxlen=250)
 
   return text
 
 def predicting(text):
-  model = keras.models.load_model("/content/drive/MyDrive/Ironhack/final_project_fake_news/SNN_fake_news.keras")
   pred = model.predict(text)
   answers = pd.DataFrame(pred)
   answer_m = answers.mean()
