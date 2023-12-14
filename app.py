@@ -38,7 +38,8 @@ with conn.open("fake_news_model/tokenizer.pickle","rb") as tok_file:
   tokenizer = pickle.load(tok_file)
 
 with conn.open("fake_news_model/SNN_fake_news.keras","rb") as model_file:
-  model = keras.models.load_model(model_file)
+  print(model_file)
+  #model = keras.models.load_model(model_file)
 
 #nltk packages
 nltk.download('stopwords')
