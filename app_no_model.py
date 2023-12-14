@@ -35,9 +35,13 @@ nltk.download('punkt')
 #functions
 
 def scrape_url(url):
-  article = requests.get(url)
-  soup = bs(article.content, 'html.parser')
-  text = [p.getText() for p in soup.find_all('p')]
+  try:
+    article = requests.get(url)
+    soup = bs(article.content, 'html.parser')
+    text = [p.getText() for p in soup.find_all('p')]
+  except:
+    text=None
+    st.warning("Invalid URL")
   return text
 
 
@@ -77,7 +81,7 @@ def text_cleaning(text):
 
 def predicting(text):
 
-  answer = 0.6
+  answer = 0.4
   if answer > 0.5:
     return f"I think it's fake news! Be skeptic! confidence: {answer}"
   else:
@@ -177,10 +181,10 @@ with tab2:
 with tab3:
     col31,col32 = st.columns([0.3,0.7])
     with col31:
-            st.image(imp, "The imp that provides the answers lived all i'ts life in a box, and is not very smart.")
+            st.image(imp, "The imp that provides the answers lived all it's life in a box, and is not very smart.")
     with col32:
         st.header("Demo")
-        st.warning("This is a prototype, plaese do not take seriously")
+        st.warning("This is a prototype, please do not take seriously")
         st.text("Example URLs: \nhttps://www.bbc.com/news/world-us-canada-67710761\nhttps://www.bbc.com/news/world-asia-china-67689072")
         url = st.text_input('Please enter a url to test')  
         if url:
