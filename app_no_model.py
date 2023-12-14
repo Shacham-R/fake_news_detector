@@ -142,6 +142,7 @@ with tab2:
     "---"
     st.header("Modeling")
     st.write("Decision Tree")
+    st.image(decision_tree_diagramm, "No metter how deep it goes...")
     st.image(DT_EM, "A lone decision tree doesn't give the best results.")
     st.write("Random Forest")
     st.write("feature importance")
