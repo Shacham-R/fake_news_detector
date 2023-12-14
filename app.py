@@ -37,9 +37,9 @@ conn = st.connection('gcs', type=FilesConnection)
 with conn.open("fake_news_model/tokenizer.pickle","rb") as tok_file:
   tokenizer = pickle.load(tok_file)
 
-with conn.open("fake_news_model/SNN_fake_news.keras","rb") as model_file:
-  model_gcs = h5py.File(model_file, 'r')
-  model = keras.models.load_model(model_gcs)
+with conn.open("fake_news_model/SNN_fake_news.keras", "rb") as model_file:
+    with h5py.File(model_file, 'r') as model_gcs:
+        model = keras.models.load_model(model_gcs)
 
 #nltk packages
 nltk.download('stopwords')
