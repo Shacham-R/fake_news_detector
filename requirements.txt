@@ -1,4 +1,6 @@
 gcsfs==2023.12.2.post1
+google.cloud
+h5py
 st-files-connection 
 bs4==0.0.1
 keras==2.14.0

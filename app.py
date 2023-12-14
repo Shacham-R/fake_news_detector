@@ -28,18 +28,28 @@ import re
 import pickle
 from functools import reduce
 from st_files_connection import FilesConnection
+import h5py
+from google.cloud import storage
 
-# Create connection object and retrieve file contents.
-# Specify input format is a csv and to cache the result for 600 seconds.
+#Create connection object and retrieve file contents.
 conn = st.connection('gcs', type=FilesConnection)
+bucket_name = 'fake_news_model'
+model_filename = 'SNN_fake_news.keras'
+model_local_path = 'model.keras'
 
 #get files
 with conn.open("fake_news_model/tokenizer.pickle","rb") as tok_file:
   tokenizer = pickle.load(tok_file)
 
-with conn.open("fake_news_model/SNN_fake_news.keras","rb") as model_file:
-  print(model_file)
-  #model = keras.models.load_model(model_file)
+client = storage.Client()
+bucket = client.get_bucket(bucket_name)
+blob = bucket.blob(model_filename)
+blob.download_to_filename(model_local_path)
+
+model = keras.models.load_model(model_local_path)
+#with conn.open("fake_news_model/SNN_fake_news.keras", "rb") as model_file:
+    #with h5py.File(model_file, 'r') as model_gcs:
+      #model = keras.saving.load_model(model_gcs)
 
 #nltk packages
 nltk.download('stopwords')
