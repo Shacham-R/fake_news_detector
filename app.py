@@ -46,6 +46,7 @@ bucket = client.get_bucket(bucket_name)
 blob = bucket.blob(model_filename)
 blob.download_to_filename(model_local_path)
 
+model = keras.models.load_model(model_local_path)
 #with conn.open("fake_news_model/SNN_fake_news.keras", "rb") as model_file:
     #with h5py.File(model_file, 'r') as model_gcs:
       #model = keras.saving.load_model(model_gcs)
