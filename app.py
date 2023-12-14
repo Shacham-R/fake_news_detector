@@ -178,9 +178,11 @@ with tab3:
     with col32:
         st.header("Demo")
         st.warning("This is a prototype, plaese do not take seriously")
+        if url:
+          article_text = scrape_url(url)
+          text_area = st.text_area("Article Text",article_text)
         url = st.text_input('Please enter a url to test')
-        article_text = scrape_url(url)
-        text_area = st.text_area("Article Text",article_text)
+
         if st.session_state.get('predict'):
             answer = main_article_check(url)
             st.info(answer)
