@@ -54,9 +54,13 @@ nltk.download('punkt')
 #functions
 
 def scrape_url(url):
-  article = requests.get(url)
-  soup = bs(article.content, 'html.parser')
-  text = [p.getText() for p in soup.find_all('p')]
+  try:
+    article = requests.get(url)
+    soup = bs(article.content, 'html.parser')
+    text = [p.getText() for p in soup.find_all('p')]
+  except:
+    text=None
+    st.warning("Invalid URL")
   return text
 
 
@@ -110,10 +114,16 @@ def predicting(text):
     return "Seems legit to me", answer
 
 def main_article_check(url):
-  text = scrape_url(url)
-  text = text_cleaning(text)
-  text = tokenizing(text)
-  answer = predicting(text)
+  with st.status("Prepering prediction...",expanded=True) as status:
+    st.write("Scraping the web...")
+    text = scrape_url(url)
+    st.write("Found text")
+    st.write("Cleaning text")
+    text = text_cleaning(text)
+    st.write("Text is cleaned")
+    st.write("Asking the imp what he thinks")
+    answer = predicting(text)
+    status.update(label="Process complete!", state="complete",expanded=False)
   return answer
 
 #images
@@ -121,7 +131,14 @@ troll1 = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_ap
 imp = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/box_imp.png?raw=true"
 RF_FI = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/Random_forest_feature_importance.png?raw=true"
 DT_EM = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/Decision_tree_error_metrics.png?raw=true"
-
+decision_tree_diagramm = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/decistion_tree.png?raw=true"
+word_cloud_fake = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/word_cloud_fake.png?raw=true"
+word_cloud_real = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/word_cloud_real.png?raw=true"
+df_fake = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/df_fake.png?raw=true"
+df_main51k = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/df_main51k.png?raw=true"
+df_real = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/df_real.png?raw=true"
+regex = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/Regex.png?raw=true"
+model_training = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/model_training.png?raw=true"
 
 
 tab1, tab2, tab3 = st.tabs(["Overview", "Process", "Demo"])
@@ -149,42 +166,45 @@ with tab1:
 #----------------------
  
 with tab2:
-    col_process_text, col_process_images = st.columns(2)
-    with col_process_text:
-        st.header("Process")
-        st.write('''
-        ### EDA
-        - Data cleaning:
-            - Removing text with RE
-        - Statistical analysis:
-            - Word frequency by fake/real
-            
-        
-        ### Modeling
-        - Decision Tree
-        - Random Forest
-            - feature importance
-        - SNN
-        
+    st.header("EDA")
+    st.subheader("Data cleaning")
+    st.image(df_fake,"fake news")
+    st.image(df_real,"real news")
     
-    
-        
-        ''')
+    st.write("Removing text with RE")
+    st.image(regex)
 
-    with col_process_images:
-        st.image(DT_EM, "A lone decision tree doesn't give the best results.")
-        st.image(RF_FI, "Even a whole forest can't decide what's important factor.",width=250)
-        
+    st.write("The ready data")
+    st.image(df_main51k, "over 51k rows!")
+    st.subheader("Statistical analysis")
+
+    st.write("Word frequency")
+    st.image(word_cloud_real, "most frequent words labeled 'real'.")
+    st.image(word_cloud_fake, "most frequent words labeled 'fake'.")
+    "---"
+    st.header("Modeling")
+    st.write("Decision Tree")
+    st.image(decision_tree_diagramm, "No metter how deep it goes...",width=600)
+    st.image(DT_EM, "A lone decision tree doesn't give the best results.")
+    st.write("Random Forest")
+    st.write("feature importance")
+    st.image(RF_FI, "Even a whole forest can't decide what's important factor.",width=250)
+    st.subheader("SNN")
+    st.image(model_training, "Above 90% accuracy? I must be doing great!")
+    "---"
+    st.header("Streamlit app")
+    st.header("Dealing with the Cloud")
 
 #----------------------
 
 with tab3:
     col31,col32 = st.columns([0.3,0.7])
     with col31:
-            st.image(imp, "The imp that provides the answers lived all i'ts life in a box, and is not very smart.")
+            st.image(imp, "The imp that provides the answers lived all it's life in a box, and is not very smart.")
     with col32:
         st.header("Demo")
-        st.warning("This is a prototype, plaese do not take seriously")
+        st.warning("This is a prototype, please do not take seriously")
+        st.text("Example URLs: \nhttps://www.bbc.com/news/world-us-canada-67710761\nhttps://www.bbc.com/news/world-asia-china-67689072")
         url = st.text_input('Please enter a url to test')  
         if url:
           article_text = scrape_url(url)
