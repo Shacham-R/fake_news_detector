@@ -2,7 +2,10 @@ import requests
 import streamlit as st
 st.set_page_config(page_title="Fake News Detector", page_icon=":rolled_up_newspaper:", layout="wide")
 
-from beautifulsoup import BeautifulSoup as bs
+try:
+  from beautifulsoup import BeautifulSoup as bs
+except:
+  from bs4 import BeautifulSoup as bs
 
 import pandas as pd
 import numpy as np
