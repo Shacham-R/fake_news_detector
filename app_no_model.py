@@ -104,7 +104,10 @@ DT_EM = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app
 decision_tree_diagramm = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/decistion_tree.png?raw=true"
 word_cloud_fake = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/word_cloud_fake.png?raw=true"
 word_cloud_real = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/word_cloud_real.png?raw=true"
-
+df_fake = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/df_fake.png?raw=true"
+df_main51k = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/df_main51k.png?raw=true"
+df_real = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/df_real.png?raw=true"
+regex = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/Regex.png?raw=true"
 
 tab1, tab2, tab3 = st.tabs(["Overview", "Process", "Demo"])
 
@@ -132,17 +135,24 @@ with tab1:
  
 with tab2:
     st.header("EDA")
-    st.write('''- Data cleaning:
-    - Removing text with RE
-    - Statistical analysis:
-            ''')
+    st.subheader("Data cleaning")
+    st.image(df_fake,"fake news")
+    st.image(df_real,"real news")
+    
+    st.write("Removing text with RE")
+    st.image(regex)
+
+    st.write("The ready data")
+    st.image(df_main51k, "over 51k rows!")
+    st.subheader("Statistical analysis")
+
     st.write("Word frequency")
     st.image(word_cloud_real, "most frequent words labeled 'real'.")
     st.image(word_cloud_fake, "most frequent words labeled 'fake'.")
     "---"
     st.header("Modeling")
     st.write("Decision Tree")
-    st.image(decision_tree_diagramm, "No metter how deep it goes...")
+    st.image(decision_tree_diagramm, "No metter how deep it goes...",width=600)
     st.image(DT_EM, "A lone decision tree doesn't give the best results.")
     st.write("Random Forest")
     st.write("feature importance")
