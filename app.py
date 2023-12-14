@@ -34,11 +34,11 @@ from st_files_connection import FilesConnection
 conn = st.connection('gcs', type=FilesConnection)
 
 #get files
-tokenizer_fileloc = conn.open("fake_news_model/tokenizer.pickle")
-tokenizer = pickle.load(open(tokenizer_fileloc, 'rb'))
+with conn.open("fake_news_model/tokenizer.pickle","rb") as tok_file:
+  tokenizer = pickle.load(tok_file)
 
-model_file = conn.open("fake_news_model/SNN_fake_news.keras")
-model = keras.models.load_model(model_file)
+with conn.open("fake_news_model/SNN_fake_news.keras") as model_file:
+  model = keras.models.load_model(model_file)
 
 #nltk packages
 nltk.download('stopwords')
