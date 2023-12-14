@@ -181,7 +181,7 @@ with tab3:
         url = st.text_input('Please enter a url to test')
         article_text = scrape_url(url)
         text_area = st.text_area("Article Text",article_text)
-        if st.button("Predict"):
+        if st.session_state.get('predict'):
             answer = main_article_check(url)
             st.info(answer)
-
+        st.button("Predict",key="predict")
