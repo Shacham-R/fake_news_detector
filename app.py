@@ -202,7 +202,7 @@ with tab2:
     st.header("Dealing with the Cloud")
     st.image(gcs_bucket, "Wasn't on my bucket list." )
     st.header("Package management")
-    st.image(streamlit_error)
+    st.image(streamlit_error,"Ever get that feeling of Déjà vu?")
 #----------------------
 
 with tab3:
