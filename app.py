@@ -174,25 +174,25 @@ with tab2:
     st.image(df_fake,"fake news")
     st.image(df_real,"real news")
     
-    st.write("Removing text with RE")
+    st.subheader("Removing text with RE")
     st.image(regex)
 
-    st.write("Word frequency")
+    st.subheader("Statistical analysis")
+    st.subheader("Word frequency")
     st.caption("2017, yeah - a bit Trumpcentric")
     st.image(word_cloud_real, "most frequent words labeled 'real'.")
     st.image(word_cloud_fake, "most frequent words labeled 'fake'.")
     
-    st.write("The ready data")
+    st.subheader("The ready data")
     st.image(df_main51k, "over 51k rows!")
-    st.subheader("Statistical analysis")
-
+    
     "---"
     st.header("Modeling")
-    st.write("Decision Tree")
+    st.subheader("Decision Tree")
     st.image(decision_tree_diagramm, "No metter how deep it goes...",width=600)
     st.image(DT_EM, "A lone decision tree doesn't give the best results.")
-    st.write("Random Forest")
-    st.write("feature importance")
+    st.subheader("Random Forest")
+    st.subheader("feature importance")
     st.image(RF_FI, "Even a whole forest can't decide what's important factor.",width=250)
     st.subheader("SNN")
     st.image(model_training, "Above 90% accuracy? I must be doing great!")
