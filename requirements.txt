@@ -10,4 +10,4 @@ pandas==1.5.3
 Requests==2.31.0
 scipy==1.11.4
 streamlit==1.29.0
-tensorflow==2.14.0
+tensorflow==2.15.0
