@@ -141,6 +141,7 @@ regex = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app
 model_training = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/model_training.png?raw=true"
 secrets = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/secrets_managment.png?raw=true"
 gcs_bucket = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/gcs_bucket.png?raw=true"
+streamlit_error = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/streamlit_error.png?raw=true"
 
 tab1, tab2, tab3 = st.tabs(["Overview", "Process", "Demo"])
 
@@ -153,12 +154,13 @@ with tab1:
             st.image(troll1,"A troll with his laptop, spreading misinformation")
     with col12:
             st.header("Overview")
+            st.subheader("Shacham Rotem")
             st.markdown('''
     - *Business question:* in our turbulent time, how do    you moderate the content on your site? Trolls are all around… Protect yourself with our fake news detector!
 
 - *MVP:* model that classifies text as real or fake news (Binary Classification) using NLP methods with tensorflow - keras.
 
-- *Data source:* For the MVP- Kaggle, Bonus - news sites
+- *Data source:* couple of Kaggle databases
         ''')
     if st.button("click me!"):
         st.snow()
@@ -199,6 +201,8 @@ with tab2:
     st.image(secrets, "If you share a secret, is it still a secret?")
     st.header("Dealing with the Cloud")
     st.image(gcs_bucket, "Wasn't on my bucket list." )
+    st.header("Package management")
+    st.image(streamlit_error)
 #----------------------
 
 with tab3:
