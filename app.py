@@ -38,7 +38,7 @@ with conn.open("fake_news_model/tokenizer.pickle","rb") as tok_file:
 
 with conn.open("fake_news_model/SNN_fake_news.h5", "rb") as model_file:
     with h5py.File(model_file, 'r') as model_gcs:
-      model = keras.saving.load_model(model_gcs)
+      model = keras.models.load_model(model_gcs)
 
 #nltk packages
 nltk.download('stopwords')
@@ -139,7 +139,8 @@ df_main51k = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamli
 df_real = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/df_real.png?raw=true"
 regex = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/Regex.png?raw=true"
 model_training = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/model_training.png?raw=true"
-
+secrets = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/secrets_managment.png?raw=true"
+gcs_bucket = "https://github.com/Shacham-R/fake_news_detector/blob/main/streamlit_app_data/gcs_bucket.png?raw=true"
 
 tab1, tab2, tab3 = st.tabs(["Overview", "Process", "Demo"])
 
@@ -174,13 +175,15 @@ with tab2:
     st.write("Removing text with RE")
     st.image(regex)
 
+    st.write("Word frequency")
+    st.caption("2017, yeah - a bit Trumpcentric")
+    st.image(word_cloud_real, "most frequent words labeled 'real'.")
+    st.image(word_cloud_fake, "most frequent words labeled 'fake'.")
+    
     st.write("The ready data")
     st.image(df_main51k, "over 51k rows!")
     st.subheader("Statistical analysis")
 
-    st.write("Word frequency")
-    st.image(word_cloud_real, "most frequent words labeled 'real'.")
-    st.image(word_cloud_fake, "most frequent words labeled 'fake'.")
     "---"
     st.header("Modeling")
     st.write("Decision Tree")
@@ -193,14 +196,15 @@ with tab2:
     st.image(model_training, "Above 90% accuracy? I must be doing great!")
     "---"
     st.header("Streamlit app")
+    st.image(secrets, "If you share a secret, is it still a secret?")
     st.header("Dealing with the Cloud")
-
+    st.image(gcs_bucket, "Wasn't on my bucket list." )
 #----------------------
 
 with tab3:
     col31,col32 = st.columns([0.3,0.7])
     with col31:
-            st.image(imp, "The imp that provides the answers lived all it's life in a box, and is not very smart.")
+            st.image(imp, "The imp that provides the answers lived all its life in a box, and is not very smart.")
     with col32:
         st.header("Demo")
         st.warning("This is a prototype, please do not take seriously")
